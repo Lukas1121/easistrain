@@ -38,8 +38,7 @@ def ud(energy, ttheta, uenergy, uttheta):
 def ustrain(energy0, energystrained, uenergy0, uenergystrained):
     """Calculates the uncertainty on the strain coming from the measured strain-free energy and the strained energy"""
     return numpy.sqrt(
-        ((uenergy0**2) / (energy0**2))
-        + ((uenergystrained**2) / (energystrained**2))
+        ((uenergy0**2) / (energy0**2)) + ((uenergystrained**2) / (energystrained**2))
     )
 
 
@@ -263,24 +262,24 @@ def preStraind0cstEDD(
                             )  ## uncertainty on the strain of the VD
                         # print(allPtsInPeak[j, 3:8])
                         qq1, qq2, qq3 = compute_qs(allPtsInPeak[j, 3:8])
-                        pts[
-                            j, 9
-                        ] = qq1  ## component of the scattering vector in the x direction
-                        pts[
-                            j, 10
-                        ] = qq2  ## component of the scattering vector in the y direction
-                        pts[
-                            j, 11
-                        ] = qq3  ## component of the scattering vector in the z direction
-                        uncertaintyPts[
-                            j, 9
-                        ] = qq1  ## component of the scattering vector in the x direction
-                        uncertaintyPts[
-                            j, 10
-                        ] = qq2  ## component of the scattering vector in the y direction
-                        uncertaintyPts[
-                            j, 11
-                        ] = qq3  ## component of the scattering vector in the z direction
+                        pts[j, 9] = (
+                            qq1  ## component of the scattering vector in the x direction
+                        )
+                        pts[j, 10] = (
+                            qq2  ## component of the scattering vector in the y direction
+                        )
+                        pts[j, 11] = (
+                            qq3  ## component of the scattering vector in the z direction
+                        )
+                        uncertaintyPts[j, 9] = (
+                            qq1  ## component of the scattering vector in the x direction
+                        )
+                        uncertaintyPts[j, 10] = (
+                            qq2  ## component of the scattering vector in the y direction
+                        )
+                        uncertaintyPts[j, 11] = (
+                            qq3  ## component of the scattering vector in the z direction
+                        )
 
 
 if __name__ == "__main__":

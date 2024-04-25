@@ -27,8 +27,7 @@ def cubicdspacing(e, a, h, k, l):
 
 def hexdspacing(e, a, c, h, k, l):
     d = numpy.sqrt(
-        1
-        / ((4 / 3) * (((h**2) + h * k + (k**2)) / (a**2)) + ((l**2) / (c**2)))
+        1 / ((4 / 3) * (((h**2) + h * k + (k**2)) / (a**2)) + ((l**2) / (c**2)))
     )
     theta = numpy.arcsin(0.0012398 / (2 * e * d))
     return d, theta
