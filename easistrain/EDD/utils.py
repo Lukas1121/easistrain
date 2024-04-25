@@ -245,7 +245,9 @@ def fit_detector_data(
         covariance = numpy.empty((5 * nb_peaks, 5 * nb_peaks))
         covariance.fill(numpy.NaN)
 
-    fitted_data = splitPseudoVoigt(channels, optimal_parameters) + calculated_background
+    fitted_data = (
+        splitPseudoVoigt(channels, *list(optimal_parameters)) + calculated_background
+    )
 
     goodness_factor = (
         100 * numpy.sum(numpy.absolute(fitted_data - raw_data)) / numpy.sum(raw_data)
