@@ -196,9 +196,9 @@ def peak_dataset_data(
         savedPeakFitParams[
             4
         ],  ## shape factor (contribution of the lorentzian function)
-        savedPeakFitParams[5]
-        if len(savedPeakFitParams) >= 6
-        else 0,  ## Rw factor of HD (goodness of the fit)
+        (
+            savedPeakFitParams[5] if len(savedPeakFitParams) >= 6 else 0
+        ),  ## Rw factor of HD (goodness of the fit)
     ]
 
 

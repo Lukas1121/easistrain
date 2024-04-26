@@ -8,16 +8,16 @@ def generate_detector_calib_file(
 ):
     with h5py.File(test_data_path, "r") as test_file:
         with h5py.File(output_path, "w") as h5file:
-            h5file[
-                f"detectorCalibration/{scan_name}/calibCoeffs/calibCoeffsVD"
-            ] = test_file["vertical/coeffs"][()]
+            h5file[f"detectorCalibration/{scan_name}/calibCoeffs/calibCoeffsVD"] = (
+                test_file["vertical/coeffs"][()]
+            )
             h5file[
                 f"detectorCalibration/{scan_name}/calibCoeffs/uncertaintyCalibCoeffsVD"
             ] = test_file["vertical/errors"][()]
 
-            h5file[
-                f"detectorCalibration/{scan_name}/calibCoeffs/calibCoeffsHD"
-            ] = test_file["horizontal/coeffs"][()]
+            h5file[f"detectorCalibration/{scan_name}/calibCoeffs/calibCoeffsHD"] = (
+                test_file["horizontal/coeffs"][()]
+            )
 
             h5file[
                 f"detectorCalibration/{scan_name}/calibCoeffs/uncertaintyCalibCoeffsHD"

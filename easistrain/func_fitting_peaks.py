@@ -493,7 +493,7 @@ def fit(root_data, h5file, scan, tth_min, tth_max, bgd_left, bgd_right, fct, hkl
                                 R1, success = scipy.optimize.leastsq(
                                     errfunc, P, args=(x1, y1), maxfev=10000
                                 )
-                                finalfit = fitfunc(R1, x1)
+                                _ = fitfunc(R1, x1)
                             if fct == "gauss":
 
                                 def fitfunc(P, x):
@@ -505,7 +505,7 @@ def fit(root_data, h5file, scan, tth_min, tth_max, bgd_left, bgd_right, fct, hkl
                                 R1, success = scipy.optimize.leastsq(
                                     errfunc, P, args=(x1, y1), maxfev=10000
                                 )
-                                finalfit = fitfunc(R1, x1)
+                                _ = fitfunc(R1, x1)
                             if fct == "Lorentz":
 
                                 def fitfunc(P, x):
@@ -517,7 +517,7 @@ def fit(root_data, h5file, scan, tth_min, tth_max, bgd_left, bgd_right, fct, hkl
                                 R1, success = scipy.optimize.leastsq(
                                     errfunc, P, args=(x1, y1), maxfev=10000
                                 )
-                                finalfit = fitfunc(R1, x1)
+                                _ = fitfunc(R1, x1)
                             if fct == "PsV":
 
                                 def fitfunc(P, x):
@@ -531,7 +531,7 @@ def fit(root_data, h5file, scan, tth_min, tth_max, bgd_left, bgd_right, fct, hkl
                                 R1, success = scipy.optimize.leastsq(
                                     errfunc, P, args=(x1, y1), maxfev=10000
                                 )
-                                finalfit = fitfunc(R1, x1)
+                                _ = fitfunc(R1, x1)
                             else:
                                 print("#### The fitting function is not defined")
                                 print(

@@ -39,9 +39,9 @@ def generate_input_files(
                     global_grp[f"inSample_{peak_name}"] = data_file[
                         f"{orientation}/ref_{peak_name}/value"
                     ][()]
-                    global_grp[
-                        f"inSample_uncertainty{peak_name.capitalize()}"
-                    ] = data_file[f"{orientation}/ref_{peak_name}/errors"][()]
+                    global_grp[f"inSample_uncertainty{peak_name.capitalize()}"] = (
+                        data_file[f"{orientation}/ref_{peak_name}/errors"][()]
+                    )
 
     return cfg
 
