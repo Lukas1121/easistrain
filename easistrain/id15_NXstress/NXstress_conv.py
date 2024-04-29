@@ -1146,7 +1146,7 @@ class NXstressFromRaw:
                 self.energy_calib = self.energy_calib_det0
                 self.rotated = True
                 for entry_idx, entry in enumerate(entries):
-                    if entry_idx + 1 > self.scanNbForRotation:
+                    if entry_idx + 1 >= self.scanNbForRotation:
                         self.process_file(
                             horizontal_output_file_name, entry, detector_index=0
                         )

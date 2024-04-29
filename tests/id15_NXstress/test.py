@@ -4,7 +4,7 @@ import os
 # Determine the absolute directory path of test.py
 dir_path = os.path.abspath(os.path.dirname(__file__))
 
-file_path = os.path.join(dir_path, "../data/Ni_Ring_0001.h5")
+file_path = os.path.join(dir_path, "../data/test_id15_raw.h5")
 det_calib_file_angle = os.path.join(dir_path, "../data/angleCalib.h5")
 det_calib_file_energy = os.path.join(dir_path, "../data/energyCalib.h5")
 
@@ -15,10 +15,8 @@ nx_stress = NXstressFromRaw(
     with_cradle=False,
     lattice="lattice",
     phase_name="phase_name",
-    scanNbForRotation=80,
+    scanNbForRotation=2,
     experimental_identifier="experimental_identifier",
     collection_identifier="collection_identifier",
     test_script=True,
 )
-
-nx_stress.main()
