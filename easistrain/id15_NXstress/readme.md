@@ -20,7 +20,7 @@ det_calib_file_angle: 'C:\path_to_file\angleCalib.h5'
 det_calib_file_energy: 'C:\path_to_file\energyCalib.h5'
 with_cradle: false
 lattice: 'cubic'
-phase_name: 'Heavy metal'
+phase_name: 'Nickel'
 scanNbForRotation: 80
 experimental_identifier: 'ihme19'
 collection_identifier: 'write something here'
@@ -39,7 +39,7 @@ Before running the example, ensure that you have a `config.yml` file in the same
 Here's a simple script to demonstrate how to initialize and run the package:
 
 ```python
-from id15_NXstress import initialize_system
+from easistrain.id15_NXstress import initialize_system
 import os
 
 # Determine the path to the configuration file
