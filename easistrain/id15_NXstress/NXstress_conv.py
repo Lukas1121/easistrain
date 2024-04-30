@@ -304,7 +304,14 @@ class NXstressFromRaw:
         """
 
         def process_fit_parameters(data):
-            columns = ["area", "center", "fwhm_left", "fwhm_right", "form_factor", "goodness_of_fit"]
+            columns = [
+                "area",
+                "center",
+                "fwhm_left",
+                "fwhm_right",
+                "form_factor",
+                "goodness_of_fit",
+            ]
             data = np.asarray(data).T
             fitParams = dict(zip(columns, data))
             return fitParams
