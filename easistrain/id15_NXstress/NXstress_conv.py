@@ -304,28 +304,10 @@ class NXstressFromRaw:
         """
 
         def process_fit_parameters(data):
-            area = []
-            center = []
-            fwhm_left = []
-            fwhm_right = []
-            form_factor = []
-            goodness_of_fit = []
-            for array in data:
-                area.append(array[0])
-                center.append(array[1])
-                fwhm_left.append(array[2])
-                fwhm_right.append(array[3])
-                form_factor.append(array[4])
-                if len(array) == 6:
-                    goodness_of_fit.append(array[5])
-            return {
-                "area": area,
-                "center": center,
-                "fwhm_left": fwhm_left,
-                "fwhm_right": fwhm_right,
-                "form_factor": form_factor,
-                "goodness_of_fit": goodness_of_fit,
-            }
+            columns = ["area", "center", "fwhm_left", "fwhm_right", "form_factor", "goodness_of_fit"]
+            data = np.asarray(data).T
+            fitParams = dict(zip(columns, data))
+            return fitParams
 
         entry_group = output_file[entry_name]
         fit_group = entry_group.create_group("fit")
@@ -372,8 +354,8 @@ class NXstressFromRaw:
 
         peak_parameters_group = fit_group.create_group("peak_parameters")
         peak_parameters_group.attrs["NX_class"] = "NXdata"
+        peak_parameters_group.attrs["signal"] = "area"
         peak_parameters_group.attrs["auxiliary_signals"] = [
-            "area",
             "center",
             "fwhm_left",
             "fwhm_right",
@@ -538,8 +520,8 @@ class NXstressFromRaw:
         peaks_group = entry_group.require_group("peaks")
         peaks_group.attrs["NX_class"] = "NXdata"
 
+        peaks_group.attrs["signal"] = "h"
         peaks_group.attrs["auxiliary_signals"] = [
-            "h",
             "k",
             "l",
             "qx",
@@ -995,7 +977,7 @@ class NXstressFromRaw:
 
         return passes_check
 
-    def process_file(self, output_file_name, raw_file_entry, detector_index):
+    def process_scan(self, output_file_name, raw_file_entry, detector_index):
         """
         Processes the specified HDF5 file to evaluate and record diffractogram data for given positioners and detectors.
         This method also initiates data processing such as peak fitting and intensity profile creation if certain conditions are met.
@@ -1122,7 +1104,7 @@ class NXstressFromRaw:
                     and entry_idx + 1 >= self.scanNbForRotation
                 ):
                     break
-                self.process_file(
+                self.process_scan(
                     translational_output_file_name, entry, detector_index=0
                 )
 
@@ -1137,7 +1119,7 @@ class NXstressFromRaw:
                     and entry_idx + 1 == self.scanNbForRotation
                 ):
                     break
-                self.process_file(radial_output_file_name, entry, detector_index=1)
+                self.process_scan(radial_output_file_name, entry, detector_index=1)
 
             if self.scanNbForRotation is not None and self.rangeFitDet2 is not None:
                 self.diffractogram_count = 0
@@ -1147,7 +1129,7 @@ class NXstressFromRaw:
                 self.rotated = True
                 for entry_idx, entry in enumerate(entries):
                     if entry_idx + 1 >= self.scanNbForRotation:
-                        self.process_file(
+                        self.process_scan(
                             horizontal_output_file_name, entry, detector_index=0
                         )
 
