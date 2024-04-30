@@ -1,13 +1,13 @@
 from easistrain.id15_NXstress import NXstressFromRaw
 import os
 
+
 def test_NXstress_conv():
     dir_path = os.path.abspath(os.path.dirname(__file__))
 
     file_path = os.path.join(dir_path, "..", "data", "test_id15_raw.h5")
     det_calib_file_angle = os.path.join(dir_path, "..", "data", "angleCalib.h5")
     det_calib_file_energy = os.path.join(dir_path, "..", "data", "energyCalib.h5")
-
 
     nx_stress = NXstressFromRaw(
         file_path=file_path,
